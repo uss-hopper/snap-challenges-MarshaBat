@@ -23,12 +23,14 @@ DROP TABLE IF EXISTS task;
 
 -- These tables will create the table "task".
 CREATE TABLE task (
-	taskID BINARY(20) NOT NULL,
+-- The following creates an attribute for the primary key.
+   taskID BINARY(20) NOT NULL,
 	taskTitle VARCHAR(255) NOT NULL,
 	taskStartDate DATETIME,
 	taskDueDate	DATETIME,
 	taskStatus VARCHAR(64) NOT NULL,
 	taskPriority VARCHAR(64) NOT NULL,
-	taskDescription VARCHAR(256)
+	taskDescription VARCHAR(256),
+	PRIMARY KEY(taskId)
 );
 
