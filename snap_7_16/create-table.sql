@@ -34,3 +34,14 @@ CREATE TABLE task (
 	PRIMARY KEY(taskId)
 );
 
+
+/**
+ *2. For the DDL described in the Data Design Project overview, create
+ *an SQL SELECT statement that gets me the following information for the Tweet with the
+ *(hexified) id 0536faef082b454e9d444cdbe7887d7a. tweetContent
+ *profileAtHandle of all users who have liked the Tweet
+*/
+
+-- Answer commented out below.
+-- SELECT tweetContent, profileId FROM tweet WHERE profileAtHandle = UNHEX(0536faef082b454e9d444cdbe7887d7a);
+
