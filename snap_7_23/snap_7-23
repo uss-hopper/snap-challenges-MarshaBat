@@ -1,0 +1,63 @@
+<?php
+
+/*Write a class with two state variables, accessors, mutators, and a method that does something.
+
+extra credit
+instaniate the class and call to a method.*/
+
+class Profile {
+
+	/**
+	 *This is an ID for the user's profile. This is the PRIMARY KEY and a NUMERIC VALUE **/
+
+	private $profileId;
+
+	/*This is the user's email tied to their profile.*/
+
+	private $profileEmail;
+
+
+}
+
+	/* START OF ACCESSORS & MUTATORS */
+
+	public function getProfileId(): Uuid {
+		return ($this->profileId);
+}
+
+	public function setProfileId($newProfileId) : void {
+		try {
+			$uuid = self::validateUuid($newProfileId);
+		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+			$exceptionType = get_class($exception);
+			throw(new $exceptionType($exception->getMessage(), 0, $exception));
+		}
+}
+
+
+	public function getProfileEmail() : string {
+		return($this->profileEmail);
+}
+
+	public function setProfileEmail() : string {
+		// This verifies that the email address is secure
+		$newProfileEmail = trim($newProfileEmail);
+		$newProfile = filter_var($newProfileEmail, FILTER_VALIDATE_EMAIL);
+		if(empty($newProfileEmail) === true) {
+		throw(new \InvalidArgumentException("author email is empty or insecure"));
+	}
+		// This verifies the email will fit in the database
+		if(strlen($newProfile > 128) {
+		throw(new \RangeException("profile email length is too long"));
+	}
+		// store the email
+		return $this->profileEmail = $newProfileEmail;
+		//return; May need to delete this line->"return;"??
+}
+
+};
+
+
+
+
+

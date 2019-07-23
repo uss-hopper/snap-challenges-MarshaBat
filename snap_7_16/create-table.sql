@@ -22,7 +22,7 @@ ALTER DATABASE mbattee CHARACTER SET utf8_unicode_ci;
 DROP TABLE IF EXISTS task;
 
 -- These tables will create the table "task".
-CREATE TABLE task (
+CREATE TABLE IF NOT EXISTS task (
 -- The following creates an attribute for the primary key.
    taskID BINARY(20) NOT NULL,
 	taskTitle VARCHAR(255) NOT NULL,
@@ -43,5 +43,9 @@ CREATE TABLE task (
 */
 
 -- Answer commented out below.
--- SELECT tweetContent, profileId FROM tweet WHERE profileAtHandle = UNHEX(0536faef082b454e9d444cdbe7887d7a);
+SELECT tweet.tweetContent, profile.profileAtHandle FROM tweet
+		INNER JOIN `like` ON tweet.tweetId = like.likeTweetId
+		INNER JOIN profile ON like.likeProfileId = profile.profileId
+		WHERE tweet.tweetId = '0536faef082b454e9d444cdbe7887d7a';
+
 
