@@ -1,5 +1,12 @@
 <?php
 
+namespace Mbattee\SnapChallenges;
+
+require_once("autoload.php");
+require_once(dirname(__DIR__) . "autoload.php");
+
+use Ramsey\Uuid\Uuid;
+
 /*Write a class with two state variables, accessors, mutators, and a method that does something.
 
 extra credit
@@ -26,36 +33,33 @@ class Profile {
 }
 
 	public function setProfileId($newProfileId) : void {
-		try {
-			$uuid = self::validateUuid($newProfileId);
+	try {
+		$uuid = self::validateUuid($newProfileId);
 		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
-			$exceptionType = get_class($exception);
-			throw(new $exceptionType($exception->getMessage(), 0, $exception));
-		}
-}
-
+		$exceptionType = get_class($exception);
+		throw(new $exceptionType($exception->getMessage(), 0, $exception));
+	}
 
 	public function getProfileEmail() : string {
 		return($this->profileEmail);
 }
 
-	public function setProfileEmail() : string {
+	public function setProfileEmail($newProfileEmail) : string {
 		// This verifies that the email address is secure
 		$newProfileEmail = trim($newProfileEmail);
 		$newProfile = filter_var($newProfileEmail, FILTER_VALIDATE_EMAIL);
 		if(empty($newProfileEmail) === true) {
-		throw(new \InvalidArgumentException("author email is empty or insecure"));
+		throw(new \InvalidArgumentException("profile email is empty or insecure"));
 	}
 		// This verifies the email will fit in the database
-		if(strlen($newProfile > 128) {
-		throw(new \RangeException("profile email length is too long"));
+		if(strlen($newProfileEmail > 128) {
+			throw(new \RangeException("profile email length is too long"));
 	}
 		// store the email
-		return $this->profileEmail = $newProfileEmail;
-		//return; May need to delete this line->"return;"??
-}
-
+		return($this->profileEmail = $newProfileEmail);
+	}
 };
+
 
 
 
