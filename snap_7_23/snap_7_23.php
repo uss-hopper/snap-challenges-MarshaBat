@@ -20,7 +20,6 @@ class Snowboard {
 	public function getPrice() : float {
 		return($this->price);
 	}
-
 	public function getCost() : float {
 		return($this->cost);
 	}
@@ -30,7 +29,7 @@ class Snowboard {
 	public function setCost(float $newCost) : void {
 		$this->price = $newCost;
 	}
-	//This calculates the profit
+	//This calculates the profit. Price minus cost.
 
 	public function profit() : void {
 		echo ($this->price - $this->cost);
