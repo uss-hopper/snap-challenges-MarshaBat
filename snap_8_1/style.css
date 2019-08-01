@@ -13,3 +13,17 @@ li {
 	font-size: 3em;
 	text-align: center;
 }
+
+.my-item {
+	margin-top: 10px;
+	padding: 5px;
+	border: 0px;
+
+}
+
+.my-list {
+	display: flex;
+	justify-content: space-around;
+
+
+}
